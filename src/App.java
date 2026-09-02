@@ -2,7 +2,7 @@
 public class App {
     public static Integer[] vetorDeNumeros() {
         return new Integer[]{
-            10, 14, 63, 29, 95
+            88 , 55, 44, 12, 10, 8
         };
     }
 
@@ -17,14 +17,27 @@ public class App {
 
 
     public static void main(String[] args) throws Exception {
-        int n = 150000;
+        int n = 50000;
         long inicio, fim, tempo;
-        Integer[] numeros = gerarVetorAleatorio(n);
-        Integer[] numerosBubbleSort = numeros.clone();
+        Integer[] numerosSelectionSort = gerarVetorAleatorio(n);
+        Integer[] numerosBubbleSort = numerosSelectionSort.clone();
+        Integer[] numerosInsertionSort = numerosSelectionSort.clone();
+
+        // Insertion Sort
+        InsertionSort insertionSort = new InsertionSort<>();
+        inicio = System.currentTimeMillis();
+        insertionSort.sort(numerosInsertionSort);
+        fim = System.currentTimeMillis();
+        tempo = fim - inicio;
+        System.out.println("Tempo(ms) do InsertionSort:"+tempo);
+        System.out.println("Comparacoes ISort:"+insertionSort.getContaComparacoes());        
+        System.out.println("Deslocamentos ISort:"+insertionSort.getContaDeslocamentos());        
+
+        
         //System.out.println("Vetor gerado:"+ Arrays.toString(numeros));
         SelectionSort selectionSort = new SelectionSort<>();
         inicio = System.currentTimeMillis();
-        selectionSort.sort(numeros);
+        selectionSort.sort(numerosSelectionSort);
         fim = System.currentTimeMillis();
         tempo = fim - inicio;
         //System.out.println("Vetor ordenado:"+ Arrays.toString(numeros));
@@ -38,8 +51,11 @@ public class App {
         bubbleSort.sort(numerosBubbleSort);
         fim = System.currentTimeMillis();
         tempo = fim - inicio;
+        System.out.println("Comparacoes Bubble Sort:"+bubbleSort.getContaComparacoes());
+        System.out.println("Trocas Bubble Sort:"+bubbleSort.getContaTrocas());
         System.out.println("Tempo(ms) do BubbleSort:"+tempo);
 
+        
 
 
     }
