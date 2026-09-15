@@ -1,18 +1,41 @@
-## Getting Started
+# Implementações de Ordenação - Estrutura de Dados II
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Este projeto reúne implementações de algoritmos de ordenação desenvolvidas para a disciplina de **Estrutura de Dados II**.
 
-## Folder Structure
+As implementações foram escritas em Java e utilizam generics, `Comparable` e `Comparator` para permitir a ordenação de diferentes tipos de dados.
 
-The workspace contains two folders by default, where:
+## Algoritmos implementados
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- **Bubble Sort**: possui versões tradicional, detalhada e otimizada.
+- **Insertion Sort**: ordenação por inserção.
+- **Selection Sort**: ordenação por seleção do menor elemento.
+- **Quick Sort**: ordenação baseada na divisão do vetor a partir de um pivô.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Os algoritmos contabilizam operações como comparações, trocas e deslocamentos, permitindo observar o custo de cada estratégia.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## Estrutura do projeto
 
-## Dependency Management
+- `src/App.java`: classe principal e exemplos de execução.
+- `src/BubbleSort.java`: implementação do Bubble Sort.
+- `src/InsertionSort.java`: implementação do Insertion Sort.
+- `src/SelectionSort.java`: implementação do Selection Sort.
+- `src/QuickSort.java`: implementação do Quick Sort.
+- `src/Pessoa.java`: classe de exemplo que implementa `Comparable`.
+- `src/ComparadorData.java`: comparador para ordenar pessoas pela data de nascimento.
+- `lib/`: bibliotecas externas, caso sejam necessárias.
+- `out/`: arquivos compilados gerados pelo projeto.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## Como executar
+
+No terminal, a partir da pasta do projeto:
+
+```powershell
+javac -d out src\*.java
+java -cp out App
+```
+
+O programa gera um vetor de números inteiros, executa os algoritmos de ordenação e exibe métricas de comparações, trocas, deslocamentos e tempo de execução.
+
+## Objetivo acadêmico
+
+O objetivo é estudar o funcionamento dos algoritmos de ordenação, praticar a implementação de estruturas e técnicas fundamentais e comparar o desempenho de diferentes métodos.
