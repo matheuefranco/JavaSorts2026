@@ -15,62 +15,47 @@ public class App {
     }
 
 
-   public static void main(String[] args) {
-        int n = 50000;
+    public static void main(String[] args) {
+        int n = 100000;
         long inicio, fim, tempo;
-        Integer[] numerosSelectionSort = gerarVetorAleatorio(n);
-        Integer[] numerosBubbleSort = numerosSelectionSort.clone();
-        Integer[] numerosInsertionSort = numerosSelectionSort.clone();
-        Integer[] numerosQuickSort = numerosSelectionSort.clone();
+        Integer[] numerosQuickSort = gerarVetorAleatorio(n);
 
-
-        //System.out.println("Vetor gerado:"+ Arrays.toString(numeros));
+        //System.out.println("Vetor gerado:"+ Arrays.toString(numerosQuickSort));
         QuickSort<Integer> quickSort = new QuickSort<>();
         System.out.println("\n *** Quick Sort ***");
         inicio = System.currentTimeMillis();
         quickSort.sort(numerosQuickSort);
         fim = System.currentTimeMillis();
         tempo = fim - inicio;
-        //System.out.println("Vetor ordenado:"+ Arrays.toString(numeros));
+        //System.out.println("Vetor ordenado:"+ Arrays.toString(numerosQuickSort));
         System.out.println("Comparacoes QuickSort:"+quickSort.getContaComparacoes());
         System.out.println("Trocas QuickSort:"+quickSort.getContaTrocas());
         System.out.println("Tempo(ms) do QuickSort:"+tempo+" ms");
 
-        // Insertion Sort
-        InsertionSort<Integer> insertionSort = new InsertionSort<>();
-        System.out.println("\n *** ISort Sort ***");
-        inicio = System.currentTimeMillis();
-        insertionSort.sort(numerosInsertionSort);
-        fim = System.currentTimeMillis();
-        tempo = fim - inicio;
-        System.out.println("Comparacoes ISort:"+insertionSort.getContaComparacoes());        
-        System.out.println("Deslocamentos ISort:"+insertionSort.getContaDeslocamentos());        
-        System.out.println("Tempo(ms) do InsertionSort:"+tempo+" ms");
+        Busca<Integer> busca = new Busca<>();
+        int valorExiste = numerosQuickSort[n/2];
+        int valorInexistente = 150;
+        System.out.println("Busca Linear ");
+        int pos = busca.linear(numerosQuickSort, valorExiste);
+        System.out.println("Valor "+ valorExiste + " posicao:"+pos);
+        System.out.println("Comparacoes:"+ busca.getContaComparacoes());
 
+        System.out.println("Busca Linear  - Inexistente");
+        pos = busca.linear(numerosQuickSort, valorInexistente);
+        System.out.println("Valor "+ valorInexistente + " posicao:"+pos);
+        System.out.println("Comparacoes:"+ busca.getContaComparacoes());
+     
+        System.out.println("Busca Binaria ");
+        pos = busca.binaria(numerosQuickSort, valorExiste);
+        System.out.println("Valor "+ valorExiste + " posicao:"+pos);
+        System.out.println("Comparacoes:"+ busca.getContaComparacoes());
+
+        System.out.println("Busca Binaria  - Inexistente");
+        pos = busca.binaria(numerosQuickSort, valorInexistente);
+        System.out.println("Valor "+ valorInexistente + " posicao:"+pos);
+        System.out.println("Comparacoes:"+ busca.getContaComparacoes());
 
         
-        //System.out.println("Vetor gerado:"+ Arrays.toString(numeros));
-        SelectionSort<Integer> selectionSort = new SelectionSort<>();
-        System.out.println("\n *** Selection Sort ***");
-        inicio = System.currentTimeMillis();
-        selectionSort.sort(numerosSelectionSort);
-        fim = System.currentTimeMillis();
-        tempo = fim - inicio;
-        //System.out.println("Vetor ordenado:"+ Arrays.toString(numeros));
-        System.out.println("Comparacoes Selection:"+selectionSort.getContaComparacoes());
-        System.out.println("Trocas Selection:"+selectionSort.getContaTrocas());
-        System.out.println("Tempo(ms) do Selection:"+tempo+" ms");
-
-        // Bubble Sort
-        BubbleSort<Integer> bubbleSort = new BubbleSort<>();
-        System.out.println("\n *** Bubble Sort ***");
-        inicio = System.currentTimeMillis();
-        bubbleSort.sort(numerosBubbleSort);
-        fim = System.currentTimeMillis();
-        tempo = fim - inicio;
-        System.out.println("Comparacoes Bubble Sort:"+bubbleSort.getContaComparacoes());
-        System.out.println("Trocas Bubble Sort:"+bubbleSort.getContaTrocas());
-        System.out.println("Tempo(ms) do BubbleSort:"+tempo+" ms");
 
     }
 }
